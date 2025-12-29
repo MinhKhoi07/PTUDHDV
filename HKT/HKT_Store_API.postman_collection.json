@@ -1,0 +1,285 @@
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-123456789abc",
+    "name": "HKT Store API",
+    "description": "Complete API collection for HKT Store e-commerce",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "GET - List Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/list.php?page=1&limit=12&sort=newest",
+              "host": ["{{base_url}}"],
+              "path": ["products", "list.php"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "12"},
+                {"key": "sort", "value": "newest"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Product Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/detail.php?id=001",
+              "host": ["{{base_url}}"],
+              "path": ["products", "detail.php"],
+              "query": [{"key": "id", "value": "001"}]
+            }
+          }
+        },
+        {
+          "name": "GET - Search Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/search.php?q=tuong&page=1&limit=12",
+              "host": ["{{base_url}}"],
+              "path": ["products", "search.php"],
+              "query": [
+                {"key": "q", "value": "tuong"},
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "12"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "POST - Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"xali\", \"password\": \"password123\"}"
+            },
+            "url": {"raw": "{{base_url}}/auth/login.php", "host": ["{{base_url}}"], "path": ["auth", "login.php"]}
+          }
+        },
+        {
+          "name": "POST - Register",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"newuser\", \"email\": \"new@example.com\", \"password\": \"password123\", \"full_name\": \"New User\"}"
+            },
+            "url": {"raw": "{{base_url}}/auth/register.php", "host": ["{{base_url}}"], "path": ["auth", "register.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "GET - Cart Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/cart/get.php", "host": ["{{base_url}}"], "path": ["cart", "get.php"]}
+          }
+        },
+        {
+          "name": "POST - Add to Cart",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"product_id\": \"001\", \"quantity\": 1}"
+            },
+            "url": {"raw": "{{base_url}}/cart/add.php", "host": ["{{base_url}}"], "path": ["cart", "add.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "POST - Create Order",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"full_name\": \"Trần Thanh Thưởng\", \"email\": \"test@example.com\", \"phone\": \"0392656499\", \"address\": \"Cầu Ngang\", \"payment_method\": \"cod\"}"
+            },
+            "url": {"raw": "{{base_url}}/orders/create.php", "host": ["{{base_url}}"], "path": ["orders", "create.php"]}
+          }
+        },
+        {
+          "name": "GET - Orders List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders/list.php?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["orders", "list.php"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Order Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders/detail.php?id=1",
+              "host": ["{{base_url}}"],
+              "path": ["orders", "detail.php"],
+              "query": [{"key": "id", "value": "1"}]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wishlist",
+      "item": [
+        {
+          "name": "GET - Wishlist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/wishlist/get.php", "host": ["{{base_url}}"], "path": ["wishlist", "get.php"]}
+          }
+        },
+        {
+          "name": "POST - Add to Wishlist",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\"product_id\": \"001\"}"},
+            "url": {"raw": "{{base_url}}/wishlist/add.php", "host": ["{{base_url}}"], "path": ["wishlist", "add.php"]}
+          }
+        },
+        {
+          "name": "POST - Remove from Wishlist",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\"product_id\": \"001\"}"},
+            "url": {"raw": "{{base_url}}/wishlist/remove.php", "host": ["{{base_url}}"], "path": ["wishlist", "remove.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "GET - User Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/user/profile.php", "host": ["{{base_url}}"], "path": ["user", "profile.php"]}
+          }
+        },
+        {
+          "name": "POST - Update Profile",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"full_name\": \"Updated Name\", \"phone\": \"0392656499\", \"address\": \"New Address\"}"
+            },
+            "url": {"raw": "{{base_url}}/user/update-profile.php", "host": ["{{base_url}}"], "path": ["user", "update-profile.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "GET - Categories List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/categories/list.php", "host": ["{{base_url}}"], "path": ["categories", "list.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "GET - Reviews List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/reviews/list.php?product_id=001&page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["reviews", "list.php"],
+              "query": [
+                {"key": "product_id", "value": "001"},
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST - Create Review",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"product_id\": \"001\", \"rating\": 5, \"content\": \"Sản phẩm rất tốt!\"}"
+            },
+            "url": {"raw": "{{base_url}}/reviews/create.php", "host": ["{{base_url}}"], "path": ["reviews", "create.php"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stats",
+      "item": [
+        {
+          "name": "GET - Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/stats/dashboard.php", "host": ["{{base_url}}"], "path": ["stats", "dashboard.php"]}
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {"key": "base_url", "value": "http://localhost/TTHUONG/api", "type": "string"},
+    {"key": "username", "value": "xali", "type": "string"},
+    {"key": "password", "value": "password123", "type": "string"},
+    {"key": "user_id", "value": "3", "type": "string"},
+    {"key": "product_id", "value": "001", "type": "string"}
+  ]
+}
